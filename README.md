@@ -2,6 +2,8 @@
 
 Design tokens + integration harness for Charm's AI assistant embed in the Radiant portal.
 
+View kit here: https://luclemo.github.io/radiant-charm-dialog-kit/
+
 **The split, in one line:** Radiant owns the dialog shell + header (fixed).
 Charm owns everything below the seam (the slot) and renders whatever it needs —
 these tokens are how that content still reads as D.A.V.I.D.
@@ -20,17 +22,25 @@ these tokens are how that content still reads as D.A.V.I.D.
 
 ## What we handle, what's yours
 
-**We take care of these, so you can build on top:**
+**On us:**
 - We render the header and dialog frame — your content starts **below the seam** (the header's 1px bottom border).
-- Your slot meets our header cleanly; the harness shows the default.
-- A couple that keep the embed feeling native: load **Inter inside your iframe** (fonts don't cross the frame boundary — self-host it; the `tokens.css` fallback is just a safety net), and carry the a11y basics through (visible focus ring `--ring`, text contrast, `prefers-reduced-motion`).
+
+**On you:**
+- Meet the seam cleanly where your slot joins our header — the Dialog page shows the default.
+- Load the `Inter` font **inside your iframe** — fonts don't cross the frame boundary, so self-host it; the `tokens.css` fallback is just a safety net.
+- Carry the a11y basics through: visible focus ring (`--ring`), text contrast, and `prefers-reduced-motion`.
 
 **Entirely your call:**
-- Messages, empty state, composer — however you like. Build with the tokens and it lands on-brand. Our examples are suggestions, not spec.
+- Messages, empty state, composer — however you like. Build with the tokens so it stays on-brand. Our examples are suggestions, not spec.
 
 ## Using the tokens with Tailwind v4
 
-Radiant is on Tailwind v4. Import the tokens, then map them to utilities with
+Ultimate source of truth for radiant:
+
+- **Theme:** https://github.com/radiant-network/radiant-portal/tree/main/frontend/themes/radiant
+- **Components:** https://github.com/radiant-network/radiant-portal/tree/main/frontend/components
+
+Radiant is on Tailwind v4. Suggestion: import the tokens, then map them to utilities with
 `@theme inline` so `bg-primary`, `text-muted-foreground`, `rounded-[--radius]`,
 etc. resolve to our values:
 
@@ -55,34 +65,6 @@ etc. resolve to our values:
   --font-mono: var(--font-mono);
 }
 ```
-
-Not on Tailwind v4? Tell us and we'll add a v3 `tailwind.config` preset — the
-`tokens.css` variables stay the same either way.
-
-## Viewing
-
-**Hosted (GitHub Pages):** once Pages is enabled, the pages are live at
-`https://<owner>.github.io/radiant-charm-dialog-kit/harness.html`
-(also `/examples.html`, `/components.html`) — no clone needed to look.
-
-**Locally:** no build needed. From the repo root:
-
-```bash
-python3 -m http.server 8000
-```
-
-Then open `http://localhost:8000/harness.html`.
-
-## Deploying (GitHub Pages)
-
-`.github/workflows/pages.yml` deploys the repo root to Pages on every push to
-`main`. To turn it on once: repo **Settings → Pages → Build and deployment →
-Source: GitHub Actions**. After that, each push auto-publishes.
-
-## Updates
-
-`radiant-charm-dialog-kit` is the single distribution point — pull it, don't copy
-from Slack. Changes are tagged as releases; pin a tag if you want a stable version.
 
 > Note: `tokens.css` is a hand-maintained extract of the Radiant design system.
 > If a value ever disagrees with the live portal, the portal wins — flag it and
