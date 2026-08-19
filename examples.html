@@ -14,12 +14,6 @@
   <style>
     body { margin: 0; font-family: var(--font-sans); color: var(--foreground); background: var(--muted); -webkit-font-smoothing: antialiased; }
     .page { max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
-    .page-note {
-      background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--primary);
-      border-radius: var(--radius); padding: 0.875rem 1rem; font-size: 0.8125rem; line-height: 1.55;
-      color: var(--muted-foreground); margin-bottom: 2rem;
-    }
-    .page-note strong { color: var(--foreground); }
     .frame-label {
       font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
       color: var(--muted-foreground); margin: 2rem 0 0.625rem;
@@ -29,11 +23,14 @@
 </head>
 <body>
   <nav class="kit-nav">
-    <a class="kit-nav-brand" href="index.html">radiant-charm-dialog-kit</a>
+    <div class="kit-nav-left">
+      <a class="kit-nav-brand" href="index.html">radiant-charm-dialog-kit</a>
+      <span class="kit-nav-stamp"></span>
+    </div>
     <div class="kit-nav-right">
       <div class="kit-nav-links">
         <a href="index.html">Home</a>
-        <a href="harness.html">Harness</a>
+        <a href="harness.html">Dialog</a>
         <a href="examples.html" class="is-active">Examples</a>
         <a href="components.html">Components</a>
       </div>
@@ -45,12 +42,10 @@
   </nav>
 
   <div class="page">
-    <div class="page-note">
-      <strong>Reference, not spec.</strong> Recommended renderings for the slot —
+    <h1>Dialog Examples</h1>
+    <p class="sub">Recommended renderings for the charm dialog —
       everything below the header seam is yours. What matters is that you build with
-      the tokens in <code>tokens.css</code> so it reads as D.A.V.I.D. Buttons, input,
-      and the alert here mirror our Storybook components (including focus states).
-    </div>
+      the tokens in <code>tokens.css</code> so it mirrors the Radiant Storybook components.</p>
 
     <!-- ============ FRAME A — empty state ============ -->
     <div class="frame-label">Empty state</div>

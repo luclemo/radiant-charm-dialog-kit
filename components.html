@@ -14,14 +14,6 @@
   <style>
     body { margin: 0; font-family: var(--font-sans); color: var(--foreground); background: var(--muted); -webkit-font-smoothing: antialiased; }
     .page { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
-    h1 { font-size: 1.25rem; margin: 0 0 0.25rem; }
-    .sub { color: var(--muted-foreground); font-size: 0.875rem; margin: 0 0 2rem; }
-    .page-note {
-      background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--primary);
-      border-radius: var(--radius); padding: 0.875rem 1rem; font-size: 0.8125rem; line-height: 1.55;
-      color: var(--muted-foreground); margin-bottom: 2rem;
-    }
-    .page-note strong { color: var(--foreground); }
     section { margin-bottom: 1.75rem; }
     .section-title { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted-foreground); margin: 0 0 0.75rem; }
     .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
@@ -29,7 +21,6 @@
     .row + .row { margin-top: 1rem; }
     .stack { display: flex; flex-direction: column; gap: 0.75rem; max-width: 22rem; }
     .caption { width: 100%; font-size: 0.6875rem; color: var(--muted-foreground); text-transform: uppercase; letter-spacing: 0.04em; }
-    .proposal { border-left-color: var(--color-alert-info-foreground); }
 
     /* color swatches */
     .swatches { display: flex; flex-wrap: wrap; gap: 0.875rem; }
@@ -48,11 +39,14 @@
 </head>
 <body>
   <nav class="kit-nav">
-    <a class="kit-nav-brand" href="index.html">radiant-charm-dialog-kit</a>
+    <div class="kit-nav-left">
+      <a class="kit-nav-brand" href="index.html">radiant-charm-dialog-kit</a>
+      <span class="kit-nav-stamp"></span>
+    </div>
     <div class="kit-nav-right">
       <div class="kit-nav-links">
         <a href="index.html">Home</a>
-        <a href="harness.html">Harness</a>
+        <a href="harness.html">Dialog</a>
         <a href="examples.html">Examples</a>
         <a href="components.html" class="is-active">Components</a>
       </div>
@@ -65,14 +59,7 @@
 
   <div class="page">
     <h1>Component palette</h1>
-    <p class="sub">A starting selection from the Radiant design system that may be useful inside Charm dialog slot. For review — not a mandate.</p>
-
-    <div class="page-note">
-      <strong>How to read this.</strong> Buttons, inputs, and alerts are faithful to
-      our Storybook components (<code>button.variants.ts</code>, <code>input.tsx</code>,
-      <code>alert.tsx</code>) — including the focus ring. <strong>Tab through</strong> to
-      see focus states.
-    </div>
+    <p class="sub">A starting selection from the Radiant design system that may be useful inside Charm dialog slot. Faithful to our Storybook components (<code>button.variants.ts</code>, <code>input.tsx</code>, <code>alert.tsx</code>) — including the focus ring. Tab through to see focus states.</p>
 
     <!-- ===================== COLORS ===================== -->
     <section>
@@ -160,11 +147,6 @@
     <!-- ===================== BADGES (PROPOSAL) ===================== -->
     <section>
       <div class="section-title">Badges · Examples</div>
-      <div class="page-note proposal">
-        <strong>Proposal — confirm against the Storybook Badge before use.</strong>
-        Shown here in a genomics register (classification chips) because a clinical
-        assistant often labels findings. Colors use the alert tokens for now.
-      </div>
       <div class="card">
         <div class="row">
           <span class="badge badge-red">Pathogenic</span>

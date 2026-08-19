@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Harness · radiant-charm-dialog-kit</title>
+  <title>Dialog · radiant-charm-dialog-kit</title>
 
   <!-- Inter must be present INSIDE the iframe. In production, self-host it. -->
   <link rel="preconnect" href="https://rsms.me/" />
@@ -24,15 +24,14 @@
       flex-direction: column;
       min-height: 100vh;
     }
+    .harness-head { width: 100%; max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 0; }
     /* the dimmed backdrop the dialog sits on (harness chrome, not the spec) */
     .harness-stage {
       flex: 1;
       display: grid;
       place-items: center;
       padding: 2rem;
-      background:
-        color-mix(in oklch, var(--color-slate-950) 45%, transparent),
-        var(--color-slate-200);
+      background: color-mix(in oklch, var(--color-slate-950) 55%, var(--color-slate-200));
     }
     .harness-dialog { width: min(672px, 100%); height: min(580px, 90vh); }
     /* empty slot placeholder — matches the base harness ("Charm content…") */
@@ -41,11 +40,14 @@
 </head>
 <body>
   <nav class="kit-nav">
-    <a class="kit-nav-brand" href="index.html">radiant-charm-dialog-kit</a>
+    <div class="kit-nav-left">
+      <a class="kit-nav-brand" href="index.html">radiant-charm-dialog-kit</a>
+      <span class="kit-nav-stamp"></span>
+    </div>
     <div class="kit-nav-right">
       <div class="kit-nav-links">
         <a href="index.html">Home</a>
-        <a href="harness.html" class="is-active">Harness</a>
+        <a href="harness.html" class="is-active">Dialog</a>
         <a href="examples.html">Examples</a>
         <a href="components.html">Components</a>
       </div>
@@ -55,6 +57,11 @@
       </button>
     </div>
   </nav>
+
+  <div class="harness-head">
+    <h1>Dialog harness</h1>
+    <p class="sub">Our dialog header sits up top; the slot below is yours. Build your UI in it and check that your content meets the seam cleanly.</p>
+  </div>
 
   <div class="harness-stage">
     <div class="david-dialog harness-dialog" role="dialog" aria-modal="true" aria-labelledby="davidTitle">
