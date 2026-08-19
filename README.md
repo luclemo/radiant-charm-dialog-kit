@@ -1,0 +1,89 @@
+# radiant-charm-dialog-kit
+
+Design tokens + integration harness for Charm's AI assistant embed in the Radiant portal.
+
+**The split, in one line:** Radiant owns the dialog shell + header (fixed).
+Charm owns everything below the seam (the slot) and renders whatever it needs —
+these tokens are how that content still reads as D.A.V.I.D.
+
+## Files
+
+| File | What it is |
+|---|---|
+| `index.html` | Landing hub — links to every page. This is the GitHub Pages entry point (`/`). Every page also carries a top nav to move between them. |
+| `tokens.css` | The brand source of truth — CSS variables (light + dark), extracted from the Radiant design system. |
+| `kit.css` | Component layer — a framework-free CSS translation of our Storybook button/input/alert + the dialog shell, consuming `tokens.css`. What the pages below render with. |
+| `harness.html` | Our real dialog header + an empty slot (muted content area). Build your UI inside the slot and check the seam. Open it in a browser. |
+| `examples.html` | Recommended (not required) renderings for the slot: empty state, conversation with clinical content, streaming + error. All token-driven. |
+| `components.html` | A palette of design-system components (buttons, inputs, alerts, badges) that may be useful in the slot — for review. |
+| `assets/david-logo.svg` | The D.A.V.I.D wordmark. Referenced by the dialog header. |
+
+## What we handle, what's yours
+
+**We take care of these, so you can build on top:**
+- We render the header and dialog frame — your content starts **below the seam** (the header's 1px bottom border).
+- Your slot meets our header cleanly; the harness shows the default.
+- A couple that keep the embed feeling native: load **Inter inside your iframe** (fonts don't cross the frame boundary — self-host it; the `tokens.css` fallback is just a safety net), and carry the a11y basics through (visible focus ring `--ring`, text contrast, `prefers-reduced-motion`).
+
+**Entirely your call:**
+- Messages, empty state, composer — however you like. Build with the tokens and it lands on-brand. Our examples are suggestions, not spec.
+
+## Using the tokens with Tailwind v4
+
+Radiant is on Tailwind v4. Import the tokens, then map them to utilities with
+`@theme inline` so `bg-primary`, `text-muted-foreground`, `rounded-[--radius]`,
+etc. resolve to our values:
+
+```css
+@import "tailwindcss";
+@import "./tokens.css";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --radius: var(--radius);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+```
+
+Not on Tailwind v4? Tell us and we'll add a v3 `tailwind.config` preset — the
+`tokens.css` variables stay the same either way.
+
+## Viewing
+
+**Hosted (GitHub Pages):** once Pages is enabled, the pages are live at
+`https://<owner>.github.io/radiant-charm-dialog-kit/harness.html`
+(also `/examples.html`, `/components.html`) — no clone needed to look.
+
+**Locally:** no build needed. From the repo root:
+
+```bash
+python3 -m http.server 8000
+```
+
+Then open `http://localhost:8000/harness.html`.
+
+## Deploying (GitHub Pages)
+
+`.github/workflows/pages.yml` deploys the repo root to Pages on every push to
+`main`. To turn it on once: repo **Settings → Pages → Build and deployment →
+Source: GitHub Actions**. After that, each push auto-publishes.
+
+## Updates
+
+`radiant-charm-dialog-kit` is the single distribution point — pull it, don't copy
+from Slack. Changes are tagged as releases; pin a tag if you want a stable version.
+
+> Note: `tokens.css` is a hand-maintained extract of the Radiant design system.
+> If a value ever disagrees with the live portal, the portal wins — flag it and
+> we'll sync.

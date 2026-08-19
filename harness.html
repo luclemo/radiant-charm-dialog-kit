@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harness · radiant-charm-dialog-kit</title>
+
+  <!-- Inter must be present INSIDE the iframe. In production, self-host it. -->
+  <link rel="preconnect" href="https://rsms.me/" />
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="kit.css" />
+  <script src="kit.js"></script>
+
+  <style>
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      color: var(--foreground);
+      background: var(--muted);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    /* the dimmed backdrop the dialog sits on (harness chrome, not the spec) */
+    .harness-stage {
+      flex: 1;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+      background:
+        color-mix(in oklch, var(--color-slate-950) 45%, transparent),
+        var(--color-slate-200);
+    }
+    .harness-dialog { width: min(672px, 100%); height: min(580px, 90vh); }
+    /* empty slot placeholder — matches the base harness ("Charm content…") */
+    .charm-slot { display: grid; place-items: center; padding: 16px 24px; color: var(--muted-foreground); font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <nav class="kit-nav">
+    <a class="kit-nav-brand" href="index.html">radiant-charm-dialog-kit</a>
+    <div class="kit-nav-right">
+      <div class="kit-nav-links">
+        <a href="index.html">Home</a>
+        <a href="harness.html" class="is-active">Harness</a>
+        <a href="examples.html">Examples</a>
+        <a href="components.html">Components</a>
+      </div>
+      <button class="kit-theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="harness-stage">
+    <div class="david-dialog harness-dialog" role="dialog" aria-modal="true" aria-labelledby="davidTitle">
+      <header class="david-header">
+        <img class="david-logo" src="assets/david-logo.svg" alt="D.A.V.I.D" id="davidTitle" />
+        <span class="david-patient">{{ Patient Name }}</span>
+        <button class="david-close" aria-label="Close assistant" title="Close">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </header>
+
+      <!-- ▼▼▼ CHARM SLOT — mount your iframe / app root here ▼▼▼ -->
+      <main class="david-body charm-slot">
+        Charm content…
+      </main>
+      <!-- ▲▲▲ CHARM SLOT ▲▲▲ -->
+    </div>
+  </div>
+</body>
+</html>

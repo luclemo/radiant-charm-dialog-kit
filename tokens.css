@@ -1,0 +1,110 @@
+/* ============================================================================
+   D.A.V.I.D dialog — design tokens
+   Source of truth: radiant-portal · frontend/themes/radiant/theme.css
+   These are a hand-maintained EXTRACT for the embedded dialog slot. If a value
+   here disagrees with the Radiant portal, the portal wins — tell us and we sync.
+
+   Colors are oklch (matches the Radiant system). All modern browsers support it.
+   The slate scale mirrors Tailwind v4's defaults so this file renders standalone
+   (e.g. the harness opened from file://) without a Tailwind build present.
+   ============================================================================ */
+
+:root {
+  /* --- Type ------------------------------------------------------------- */
+  /* Inter must be loaded INSIDE your iframe (it does not cross the frame
+     boundary). Self-host or link it; the fallback stack is the safety net. */
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Menlo', 'Consolas', monospace;
+
+  /* --- Radius ----------------------------------------------------------- */
+  --radius: 0.5rem;
+
+  /* --- Brand scale (exact, from theme.css) ------------------------------ */
+  --color-radiant-50:  oklch(0.98 0.01 228.92);
+  --color-radiant-100: oklch(0.96 0.03 231.05);
+  --color-radiant-200: oklch(0.91 0.06 224.03);
+  --color-radiant-300: oklch(0.85 0.10 221.85);
+  --color-radiant-400: oklch(0.79 0.14 223.72);
+  --color-radiant-500: oklch(0.73 0.14 227.83);
+  --color-radiant-600: oklch(0.63 0.13 233.32);
+  --color-radiant-700: oklch(0.53 0.11 234.92);
+  --color-radiant-800: oklch(0.47 0.09 231.27);
+  --color-radiant-900: oklch(0.41 0.08 233.79);
+  --color-radiant-950: oklch(0.31 0.06 236.35);
+
+  /* --- Neutral scale (mirrors Tailwind v4 slate) ------------------------ */
+  --color-white:      #ffffff;
+  --color-slate-50:   oklch(0.984 0.003 247.858);
+  --color-slate-100:  oklch(0.968 0.007 247.896);
+  --color-slate-200:  oklch(0.929 0.013 255.508);
+  --color-slate-300:  oklch(0.869 0.022 252.894);
+  --color-slate-400:  oklch(0.704 0.040 256.788);
+  --color-slate-500:  oklch(0.554 0.046 257.417);
+  --color-slate-600:  oklch(0.446 0.043 257.281);
+  --color-slate-700:  oklch(0.372 0.044 257.287);
+  --color-slate-800:  oklch(0.279 0.041 260.031);
+  --color-slate-900:  oklch(0.208 0.042 265.755);
+  --color-slate-950:  oklch(0.129 0.042 264.695);
+
+  /* --- Status scale (backs --destructive and alerts) -------------------- */
+  --color-red-50:     oklch(0.971 0.013 17.38);
+  --color-red-400:    oklch(0.704 0.191 22.216);
+  --color-red-600:    oklch(0.577 0.245 27.325);
+  --color-red-700:    oklch(0.505 0.213 27.518);
+  --color-blue-400:   oklch(0.707 0.165 254.624);
+  --color-blue-700:   oklch(0.488 0.243 264.376);
+
+  /* --- Semantic tokens (light) ------------------------------------------ */
+  /* Use these, not the raw scales, so a re-theme or dark mode flows through. */
+  --background:           var(--color-white);
+  --foreground:           var(--color-radiant-950);
+  --primary:              var(--color-radiant-700);   /* user bubble, send    */
+  --primary-foreground:   var(--color-slate-50);
+  --secondary:            var(--color-slate-100);     /* assistant bubble, if */
+  --secondary-foreground: var(--color-radiant-950);
+  --muted:                var(--color-slate-100);
+  --muted-foreground:     var(--color-slate-500);     /* placeholders, meta   */
+  --accent:               var(--color-slate-100);
+  --accent-foreground:    var(--color-radiant-950);
+  --card:                 var(--color-white);
+  --card-foreground:      var(--color-radiant-950);
+  --destructive:          var(--color-red-600);       /* error states         */
+  --destructive-foreground: var(--color-red-50);
+  --border:               var(--color-slate-200);
+  --input:                var(--color-slate-300);
+  --ring:                 var(--color-radiant-700);   /* focus ring           */
+
+  /* alert surfaces — background is the color at ~20%, text/border use -foreground */
+  --color-alert-error:            var(--color-red-400);
+  --color-alert-error-foreground: var(--color-red-700);
+  --color-alert-info:             var(--color-blue-400);
+  --color-alert-info-foreground:  var(--color-blue-700);
+}
+
+/* --- Dark theme --------------------------------------------------------- */
+/* Radiant toggles dark via a `.dark` class on an ancestor. If the host tells
+   your iframe the theme, add/remove `.dark` on <html> to match. */
+.dark {
+  --background:           var(--color-slate-950);
+  --foreground:           var(--color-slate-50);
+  --primary:              var(--color-radiant-200);
+  --primary-foreground:   var(--color-radiant-950);
+  --secondary:            var(--color-slate-700);
+  --secondary-foreground: var(--color-slate-50);
+  --muted:                var(--color-slate-800);
+  --muted-foreground:     var(--color-slate-400);
+  --accent:               var(--color-slate-800);
+  --accent-foreground:    var(--color-slate-50);
+  --card:                 var(--color-slate-950);
+  --card-foreground:      var(--color-slate-50);
+  --destructive:          oklch(0.396 0.133 25.72);
+  --destructive-foreground: var(--color-red-50);
+  --border:               var(--color-slate-800);
+  --input:                var(--color-slate-800);
+  --ring:                 var(--color-radiant-200);
+
+  --color-alert-error:            var(--color-red-400);
+  --color-alert-error-foreground: var(--color-red-400);
+  --color-alert-info:             var(--color-blue-400);
+  --color-alert-info-foreground:  var(--color-blue-400);
+}
