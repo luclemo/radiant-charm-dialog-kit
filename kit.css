@@ -36,6 +36,9 @@
   text-decoration: none;
 }
 .kit-nav-stamp { font-family: var(--font-mono); font-size: 0.6875rem; color: var(--muted-foreground); white-space: nowrap; }
+.kit-nav-repo { display: inline-flex; align-items: center; gap: 5px; padding-left: 0.625rem; border-left: 1px solid var(--border); font-size: 0.8125rem; color: var(--muted-foreground); text-decoration: none; }
+.kit-nav-repo:hover { color: var(--foreground); }
+.kit-nav-repo svg { width: 12px; height: 12px; }
 .kit-nav-links { display: flex; gap: 0.25rem; }
 .kit-nav-links a {
   font-size: 0.8125rem;
